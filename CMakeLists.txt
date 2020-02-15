@@ -23,7 +23,14 @@ target_link_libraries(pf PRIVATE m openblas)
 
 option(PARTICLE_FILTER_BUILD_EXAMPLES "Build examples for particle-filter" OFF)
 if(PARTICLE_FILTER_BUILD_EXAMPLES)
-    add_executable(odometry examples/odometry.c)
+    add_executable(odometry
+        examples/alloc.c
+        examples/l2dm.c
+        examples/odometry.c
+        examples/se2.c
+        examples/trig.c
+        examples/v2dp.c
+    )
     target_compile_features(odometry PRIVATE c_std_11)
     target_link_libraries(odometry PRIVATE pf pcg_random)
 endif()
